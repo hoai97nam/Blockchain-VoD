@@ -1,0 +1,22 @@
+{
+  "name": "approach_web3js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoai97nam/Blockchain-VoD.git"
+  },
+  "author": "nguyen nam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoai97nam/Blockchain-VoD/issues"
+  },
+  "homepage": "https://github.com/hoai97nam/Blockchain-VoD#readme",
+  "dependencies": {
+    "web3": "^1.0.0-beta.55"
+  }
+}
