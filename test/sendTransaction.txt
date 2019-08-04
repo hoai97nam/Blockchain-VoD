@@ -1,0 +1,7 @@
+> var Web3 = require ('web3')
+> var web3 = new Web3 ('http://127.0.0.1:7545')
+> var account1 = 'EDc30Bb67af5C126AF1400991Fa6d2F4B4760B5C'
+> var account2 = 'D267cb5E20050289a893F2a832Bd5D6DDBe08820'
+> web3.eth.sendTransaction({from: account1, to: account2, value: web3.utils.toWei('2', 'ether') })
+> web3.eth.getBalance(account1, (err, wei) => {console.log(wei)})
+> web3.eth.getBalance(account2, (err, wei) => {console.log(wei)})

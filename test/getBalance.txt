@@ -1,0 +1,5 @@
+> var Web3 = require ('web3')
+> var web3 = new Web3 ('https://mainnet.infura.io/922a32f36e0e43d0af08e33e01e718c0')
+> var address = '0x00C5E04176d95A286fccE0E68c683Ca0bfec8454'
+> web3.eth.getBalance(address, (err, wei) => {balance = web3.utils.fromWei(wei, 'ether')})
+> balance

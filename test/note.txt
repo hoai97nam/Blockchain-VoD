@@ -1,0 +1,6 @@
+This folder for testing in node console
+If you want to run by file, 
+you have to config commands in that file for avoiding error
+ 1. Checking Account Balances
+ 2. Read Data From Smart Contract
+ 3. Inside Ethereum Transactionsloy
