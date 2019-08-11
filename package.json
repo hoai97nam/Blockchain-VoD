@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hoai97nam/Blockchain-VoD#readme",
   "dependencies": {
-    "web3": "^1.0.0-beta.55"
+    "ethereumjs-tx": "^1.1.3",
+    "web3": "^1.0.0-beta.37"
   }
 }
