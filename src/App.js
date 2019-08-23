@@ -12,19 +12,31 @@ class App extends Component {
     inputValue2: '',
     status: ''
   }
-
-  async componentDidMount() { // repeat after you had rendered
-    await this.confirm();
+  async componentWillMount() {
+    
   }
-  async componentWillUnmount(){
-    alert('end game !!!')
+  async componentDidMount() { // repeat after you had rendered
+  }
+   async componentWillUnmount(){
+    this.setState = {
+      message: '',
+      inputValue: '',
+      inputValue1: '',
+      inputValue2: '',
+      status: ''
+    }
   }
 
   confirm = async () => {
-
     const accounts = await web3.eth.getAccounts();
     const message = await hello.methods.confirm(accounts[0],"nam","nam2").call();   
-    this.setState({ message });                                  
+    if(message != '') {
+      this.setState({ message: message });
+    }
+    else {
+      alert('Your account is invalid');
+    }
+                                      
   }
   
   onSubmit = async (event) => {
@@ -34,6 +46,21 @@ class App extends Component {
     this.setState({ status: 'Done' });
     await this.confirm()
   }
+
+  onSubmit1 = async (event) => {
+    event.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+    await hello.methods.addUsr(accounts[0],"nam","nam").send({
+      from: accounts[0]
+    })
+  }
+
+  onSubmit2 = async (event) => {
+    event.preventDefault();
+    const message = await hello.methods.countInstructors().call();
+    this.setState({inputValue1: message});
+  }
+
   render() {
     return (
       <div class="App">
@@ -43,12 +70,24 @@ class App extends Component {
           <input onChange={event => this.setState({ inputValue: event.target.value })} />
           <input onChange={event => this.setState({ inputValue1: event.target.value })} />
           <input onChange={event => this.setState({ inputValue2: event.target.value })} />
-          <button>GO</button>
+          <button>find</button>
         </form>
+
+        <form onSubmit={this.onSubmit1}>
+          <input onChange={event => this.setState({ inputValue: event.target.value })} />
+          <input onChange={event => this.setState({ inputValue1: event.target.value })} />
+          <input onChange={event => this.setState({ inputValue2: event.target.value })} />
+          <button>add user</button>
+        </form>
+
         <p>{this.state.status}</p>
         <p>{this.state.inputValue1}</p>
         <p>{this.state.inputValue2}</p>
-        <iframe src={this.state.message} width='400' height='400'></iframe>
+        <iframe src={this.state.message} width='300' height='300'></iframe>
+        
+
+        <button onClick={this.onSubmit2}>Inspect number of user</button>
+        <p>{this.state.inputValue1}</p>
 
       </div>
     );

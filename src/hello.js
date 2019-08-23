@@ -1,28 +1,38 @@
 import web3 from './web3';
  
-const address = '0x190dc558f813229cbc34fd3e210ba34bf452642d';
+const address = '0x0742c8074b24825425c42813cf8f3ac5aafc70cc';
  
 const abi = [
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "usrStorages",
-		"outputs": [
-			{
 				"internalType": "address",
-				"name": "",
+				"name": "_addUsr",
 				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_passwd",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_daytime",
+				"type": "string"
 			}
 		],
+		"name": "addUsr",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"constant": true,
@@ -56,35 +66,40 @@ const abi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
+		"constant": true,
+		"inputs": [],
+		"name": "countInstructors",
+		"outputs": [
 			{
-				"internalType": "address",
-				"name": "_addUsr",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_passwd",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_daytime",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"name": "addUsr",
-		"outputs": [],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "usrStorages",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		"stateMutability": "view",
+		"type": "function"
 	}
 ];
  
