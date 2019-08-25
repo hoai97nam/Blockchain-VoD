@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import web3 from './web3';
-import hello from './hello';
+// import hello from './hello';
+// import 2 images 
+import mr from './mrPickles.jpg'
+import dra from './draven.jpg'
 
 class App extends Component {
 
@@ -10,33 +13,28 @@ class App extends Component {
     inputValue: '',
     inputValue1: '',
     inputValue2: '',
-    status: ''
+    status: '',
+    content1:''
   }
+
   async componentWillMount() {
-    
   }
+
   async componentDidMount() { // repeat after you had rendered
   }
+
    async componentWillUnmount(){
     this.setState = {
       message: '',
       inputValue: '',
       inputValue1: '',
       inputValue2: '',
-      status: ''
+      status: '',
+      content1:''
     }
   }
 
-  confirm = async () => {
-    const accounts = await web3.eth.getAccounts();
-    const message = await hello.methods.confirm(accounts[0],"nam","nam2").call();   
-    if(message != '') {
-      this.setState({ message: message });
-    }
-    else {
-      alert('Your account is invalid');
-    }
-                                      
+  confirm = async () => {                                   
   }
   
   onSubmit = async (event) => {
@@ -44,21 +42,243 @@ class App extends Component {
     
     this.setState({ status: 'Waiting for processes: ' + this.state.inputValue }); 
     this.setState({ status: 'Done' });
-    await this.confirm()
+    
+    const accounts = await web3.eth.getAccounts();
+    const hell = this.state.content1;
+    const message = await hell.methods.confirm(accounts[0],"nam","nam2").call();   
+    if(message !== '') {
+      this.setState({ message: message });
+    }
+    else {
+      alert('Your account is invalid');
+    }
   }
 
   onSubmit1 = async (event) => {
     event.preventDefault();
     const accounts = await web3.eth.getAccounts();
-    await hello.methods.addUsr(accounts[0],"nam","nam").send({
+    await this.state.content1.methods.addUsr(accounts[0],"nam","nam").send({
       from: accounts[0]
     })
   }
 
   onSubmit2 = async (event) => {
     event.preventDefault();
-    const message = await hello.methods.countInstructors().call();
+    const message = await this.state.content1.methods.countInstructors().call();
     this.setState({inputValue1: message});
+  }
+
+  onClickImg = async (event) =>{
+    const address = '0x6799890215e2c72fad3eb08efaa3d5ee0678faad';
+    const abi = [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_addUsr",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "_passwd",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_daytime",
+            "type": "string"
+          }
+        ],
+        "name": "addUsr",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_addUsr",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "_passwd",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_daytime",
+            "type": "string"
+          }
+        ],
+        "name": "confirm",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "countInstructors",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "usrStorages",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ];
+    const hello = new web3.eth.Contract(abi, address);
+    this.setState({ content1: hello });
+    alert('you have choosen Mr. Pickles');
+  }
+  onClickImg2 = async (event) => {
+    const address = '0x3018af0c08d720672fcbfaffb8984845b1cea1fa';
+    const abi = [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "usrStorages",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_addUsr",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "_passwd",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_daytime",
+            "type": "string"
+          }
+        ],
+        "name": "confirm",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_addUsr",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "_passwd",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_daytime",
+            "type": "string"
+          }
+        ],
+        "name": "addUsr",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "countInstructors",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      }
+    ]; 
+    const hello = new web3.eth.Contract(abi, address);
+    this.setState({ content1: hello });
+    alert('you have choosen Draven from League of Legends');
   }
 
   render() {
@@ -66,6 +286,11 @@ class App extends Component {
       <div class="App">
         <h2>Hello Contract</h2>
         <p>The message is: {this.state.message}</p>
+
+        <img onClick={this.onClickImg} src={mr} alt="Draven" height="50" width="50"></img>
+
+        <img onClick={this.onClickImg2} src={dra} alt="Mr. Pickles" height="50" width="50"></img>
+
         <form onSubmit={this.onSubmit}>
           <input onChange={event => this.setState({ inputValue: event.target.value })} />
           <input onChange={event => this.setState({ inputValue1: event.target.value })} />
